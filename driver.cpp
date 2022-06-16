@@ -120,276 +120,276 @@ void Driver::Run(const uint8_t* data, const size_t size) const {
         const auto payload = ds.GetData(0, 1);
 
         switch ( operation ) {
-            case CF_OPERATION("Digest"):
-                executorDigest.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("HMAC"):
-                executorHMAC.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("UMAC"):
-                executorUMAC.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("CMAC"):
-                executorCMAC.Run(ds, payload.data(), payload.size());
-                break;
+            // case CF_OPERATION("Digest"):
+            //     executorDigest.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("HMAC"):
+            //     executorHMAC.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("UMAC"):
+            //     executorUMAC.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("CMAC"):
+            //     executorCMAC.Run(ds, payload.data(), payload.size());
+            //     break;
             case CF_OPERATION("SymmetricEncrypt"):
                 executorSymmetricEncrypt.Run(ds, payload.data(), payload.size());
                 break;
             case CF_OPERATION("SymmetricDecrypt"):
                 executorSymmetricDecrypt.Run(ds, payload.data(), payload.size());
                 break;
-            case CF_OPERATION("KDF_SCRYPT"):
-                executorKDF_SCRYPT.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("KDF_HKDF"):
-                executorKDF_HKDF.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("KDF_TLS1_PRF"):
-                executorKDF_TLS1_PRF.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("KDF_PBKDF"):
-                executorKDF_PBKDF.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("KDF_PBKDF1"):
-                executorKDF_PBKDF1.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("KDF_PBKDF2"):
-                executorKDF_PBKDF2.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("KDF_ARGON2"):
-                executorKDF_ARGON2.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("KDF_SSH"):
-                executorKDF_SSH.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("KDF_X963"):
-                executorKDF_X963.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("KDF_BCRYPT"):
-                executorKDF_BCRYPT.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("KDF_SP_800_108"):
-                executorKDF_SP_800_108.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECC_PrivateToPublic"):
-                executorECC_PrivateToPublic.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECC_ValidatePubkey"):
-                executorECC_ValidatePubkey.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECC_GenerateKeyPair"):
-                executorECC_GenerateKeyPair.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECDSA_Sign"):
-                executorECDSA_Sign.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECGDSA_Sign"):
-                executorECGDSA_Sign.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECRDSA_Sign"):
-                executorECRDSA_Sign.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("Schnorr_Sign"):
-                executorSchnorr_Sign.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECDSA_Verify"):
-                executorECDSA_Verify.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECGDSA_Verify"):
-                executorECGDSA_Verify.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECRDSA_Verify"):
-                executorECRDSA_Verify.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("Schnorr_Verify"):
-                executorSchnorr_Verify.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECDSA_Recover"):
-                executorECDSA_Recover.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECDH_Derive"):
-                executorECDH_Derive.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECIES_Encrypt"):
-                executorECIES_Encrypt.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECIES_Decrypt"):
-                executorECIES_Decrypt.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECC_Point_Add"):
-                executorECC_Point_Add.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECC_Point_Mul"):
-                executorECC_Point_Mul.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECC_Point_Neg"):
-                executorECC_Point_Neg.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("ECC_Point_Dbl"):
-                executorECC_Point_Dbl.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("DH_GenerateKeyPair"):
-                executorDH_GenerateKeyPair.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("DH_Derive"):
-                executorDH_Derive.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc"):
-                executorBignumCalc.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Fp2"):
-                executorBignumCalc_Fp2.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Fp12"):
-                executorBignumCalc_Fp12.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_BLS12_381_R"):
-                executorBignumCalc_mod_bls12_381_r.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_BLS12_381_P"):
-                executorBignumCalc_mod_bls12_381_p.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_BN128_R"):
-                executorBignumCalc_mod_bn128_r.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_BN128_P"):
-                executorBignumCalc_mod_bn128_p.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_ED25519"):
-                executorBignumCalc_mod_ed25519.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_Edwards_R"):
-                executorBignumCalc_mod_edwards_r.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_Edwards_P"):
-                executorBignumCalc_mod_edwards_p.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_MNT4_R"):
-                executorBignumCalc_mod_mnt4_r.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_MNT4_P"):
-                executorBignumCalc_mod_mnt4_p.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_MNT6_R"):
-                executorBignumCalc_mod_mnt6_r.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_MNT6_P"):
-                executorBignumCalc_mod_mnt6_p.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_2Exp64"):
-                executorBignumCalc_mod_2exp64.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_2Exp128"):
-                executorBignumCalc_mod_2exp128.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_2Exp256"):
-                executorBignumCalc_mod_2exp256.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_2Exp512"):
-                executorBignumCalc_mod_2exp512.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_SECP256K1"):
-                executorBignumCalc_mod_secp256k1.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BignumCalc_Mod_SECP256K1_P"):
-                executorBignumCalc_mod_secp256k1_p.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_PrivateToPublic"):
-                executorBLS_PrivateToPublic.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_PrivateToPublic_G2"):
-                executorBLS_PrivateToPublic_G2.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_Sign"):
-                executorBLS_Sign.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_Verify"):
-                executorBLS_Verify.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_BatchSign"):
-                executorBLS_BatchSign.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_BatchVerify"):
-                executorBLS_BatchVerify.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_Aggregate_G1"):
-                executorBLS_Aggregate_G1.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_Aggregate_G2"):
-                executorBLS_Aggregate_G2.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_Pairing"):
-                executorBLS_Pairing.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_MillerLoop"):
-                executorBLS_MillerLoop.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_FinalExp"):
-                executorBLS_FinalExp.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_HashToG1"):
-                executorBLS_HashToG1.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_HashToG2"):
-                executorBLS_HashToG2.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_MapToG1"):
-                executorBLS_MapToG1.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_MapToG2"):
-                executorBLS_MapToG2.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_IsG1OnCurve"):
-                executorBLS_IsG1OnCurve.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_IsG2OnCurve"):
-                executorBLS_IsG2OnCurve.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_GenerateKeyPair"):
-                executorBLS_GenerateKeyPair.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_Decompress_G1"):
-                executorBLS_Decompress_G1.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_Compress_G1"):
-                executorBLS_Compress_G1.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_Decompress_G2"):
-                executorBLS_Decompress_G2.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_Compress_G2"):
-                executorBLS_Compress_G2.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_G1_Add"):
-                executorBLS_G1_Add.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_G1_Mul"):
-                executorBLS_G1_Mul.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_G1_IsEq"):
-                executorBLS_G1_IsEq.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_G1_Neg"):
-                executorBLS_G1_Neg.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_G2_Add"):
-                executorBLS_G2_Add.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_G2_Mul"):
-                executorBLS_G2_Mul.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_G2_IsEq"):
-                executorBLS_G2_IsEq.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("BLS_G2_Neg"):
-                executorBLS_G2_Neg.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("Misc"):
-                executorMisc.Run(ds, payload.data(), payload.size());
-                break;
-            case CF_OPERATION("SR25519_Verify"):
-                executorSR25519_Verify.Run(ds, payload.data(), payload.size());
-                break;
+            // case CF_OPERATION("KDF_SCRYPT"):
+            //     executorKDF_SCRYPT.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("KDF_HKDF"):
+            //     executorKDF_HKDF.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("KDF_TLS1_PRF"):
+            //     executorKDF_TLS1_PRF.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("KDF_PBKDF"):
+            //     executorKDF_PBKDF.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("KDF_PBKDF1"):
+            //     executorKDF_PBKDF1.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("KDF_PBKDF2"):
+            //     executorKDF_PBKDF2.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("KDF_ARGON2"):
+            //     executorKDF_ARGON2.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("KDF_SSH"):
+            //     executorKDF_SSH.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("KDF_X963"):
+            //     executorKDF_X963.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("KDF_BCRYPT"):
+            //     executorKDF_BCRYPT.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("KDF_SP_800_108"):
+            //     executorKDF_SP_800_108.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECC_PrivateToPublic"):
+            //     executorECC_PrivateToPublic.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECC_ValidatePubkey"):
+            //     executorECC_ValidatePubkey.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECC_GenerateKeyPair"):
+            //     executorECC_GenerateKeyPair.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECDSA_Sign"):
+            //     executorECDSA_Sign.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECGDSA_Sign"):
+            //     executorECGDSA_Sign.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECRDSA_Sign"):
+            //     executorECRDSA_Sign.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("Schnorr_Sign"):
+            //     executorSchnorr_Sign.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECDSA_Verify"):
+            //     executorECDSA_Verify.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECGDSA_Verify"):
+            //     executorECGDSA_Verify.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECRDSA_Verify"):
+            //     executorECRDSA_Verify.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("Schnorr_Verify"):
+            //     executorSchnorr_Verify.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECDSA_Recover"):
+            //     executorECDSA_Recover.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECDH_Derive"):
+            //     executorECDH_Derive.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECIES_Encrypt"):
+            //     executorECIES_Encrypt.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECIES_Decrypt"):
+            //     executorECIES_Decrypt.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECC_Point_Add"):
+            //     executorECC_Point_Add.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECC_Point_Mul"):
+            //     executorECC_Point_Mul.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECC_Point_Neg"):
+            //     executorECC_Point_Neg.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("ECC_Point_Dbl"):
+            //     executorECC_Point_Dbl.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("DH_GenerateKeyPair"):
+            //     executorDH_GenerateKeyPair.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("DH_Derive"):
+            //     executorDH_Derive.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc"):
+            //     executorBignumCalc.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Fp2"):
+            //     executorBignumCalc_Fp2.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Fp12"):
+            //     executorBignumCalc_Fp12.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_BLS12_381_R"):
+            //     executorBignumCalc_mod_bls12_381_r.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_BLS12_381_P"):
+            //     executorBignumCalc_mod_bls12_381_p.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_BN128_R"):
+            //     executorBignumCalc_mod_bn128_r.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_BN128_P"):
+            //     executorBignumCalc_mod_bn128_p.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_ED25519"):
+            //     executorBignumCalc_mod_ed25519.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_Edwards_R"):
+            //     executorBignumCalc_mod_edwards_r.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_Edwards_P"):
+            //     executorBignumCalc_mod_edwards_p.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_MNT4_R"):
+            //     executorBignumCalc_mod_mnt4_r.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_MNT4_P"):
+            //     executorBignumCalc_mod_mnt4_p.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_MNT6_R"):
+            //     executorBignumCalc_mod_mnt6_r.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_MNT6_P"):
+            //     executorBignumCalc_mod_mnt6_p.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_2Exp64"):
+            //     executorBignumCalc_mod_2exp64.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_2Exp128"):
+            //     executorBignumCalc_mod_2exp128.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_2Exp256"):
+            //     executorBignumCalc_mod_2exp256.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_2Exp512"):
+            //     executorBignumCalc_mod_2exp512.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_SECP256K1"):
+            //     executorBignumCalc_mod_secp256k1.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BignumCalc_Mod_SECP256K1_P"):
+            //     executorBignumCalc_mod_secp256k1_p.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_PrivateToPublic"):
+            //     executorBLS_PrivateToPublic.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_PrivateToPublic_G2"):
+            //     executorBLS_PrivateToPublic_G2.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_Sign"):
+            //     executorBLS_Sign.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_Verify"):
+            //     executorBLS_Verify.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_BatchSign"):
+            //     executorBLS_BatchSign.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_BatchVerify"):
+            //     executorBLS_BatchVerify.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_Aggregate_G1"):
+            //     executorBLS_Aggregate_G1.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_Aggregate_G2"):
+            //     executorBLS_Aggregate_G2.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_Pairing"):
+            //     executorBLS_Pairing.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_MillerLoop"):
+            //     executorBLS_MillerLoop.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_FinalExp"):
+            //     executorBLS_FinalExp.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_HashToG1"):
+            //     executorBLS_HashToG1.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_HashToG2"):
+            //     executorBLS_HashToG2.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_MapToG1"):
+            //     executorBLS_MapToG1.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_MapToG2"):
+            //     executorBLS_MapToG2.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_IsG1OnCurve"):
+            //     executorBLS_IsG1OnCurve.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_IsG2OnCurve"):
+            //     executorBLS_IsG2OnCurve.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_GenerateKeyPair"):
+            //     executorBLS_GenerateKeyPair.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_Decompress_G1"):
+            //     executorBLS_Decompress_G1.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_Compress_G1"):
+            //     executorBLS_Compress_G1.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_Decompress_G2"):
+            //     executorBLS_Decompress_G2.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_Compress_G2"):
+            //     executorBLS_Compress_G2.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_G1_Add"):
+            //     executorBLS_G1_Add.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_G1_Mul"):
+            //     executorBLS_G1_Mul.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_G1_IsEq"):
+            //     executorBLS_G1_IsEq.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_G1_Neg"):
+            //     executorBLS_G1_Neg.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_G2_Add"):
+            //     executorBLS_G2_Add.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_G2_Mul"):
+            //     executorBLS_G2_Mul.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_G2_IsEq"):
+            //     executorBLS_G2_IsEq.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("BLS_G2_Neg"):
+            //     executorBLS_G2_Neg.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("Misc"):
+            //     executorMisc.Run(ds, payload.data(), payload.size());
+            //     break;
+            // case CF_OPERATION("SR25519_Verify"):
+            //     executorSR25519_Verify.Run(ds, payload.data(), payload.size());
+            //     break;
         }
     } catch ( Datasource::OutOfData ) {
     }

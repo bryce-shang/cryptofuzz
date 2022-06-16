@@ -2304,11 +2304,14 @@ void ExecutorBase<ResultType, OperationType>::Run(Datasource& parentDs, const ui
         return;
     }
 
+    printf("operations size: %zu\n", operations.size());
+
     if ( options.debug == true && !operations.empty() ) {
-        printf("Running:\n%s\n", operations[0].second.ToString().c_str());
+        printf("Running gsgs:\n%s\n", operations[0].second.ToString().c_str());
     }
     for (size_t i = 0; i < operations.size(); i++) {
         auto& operation = operations[i];
+        // printf("Running gsgs2: %s\n", operations[i].second.ToString().c_str());
 
         auto& module = operation.first;
         auto& op = operation.second;

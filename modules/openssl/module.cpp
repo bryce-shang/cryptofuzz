@@ -165,15 +165,6 @@ const EVP_MD* OpenSSL::toEVPMD(const component::DigestType& digestType) const {
     static const std::map<uint64_t, const EVP_MD*> LUT = {
 #if defined(CRYPTOFUZZ_BORINGSSL)
         { CF_DIGEST("SHA1"), EVP_sha1() },
-        { CF_DIGEST("SHA224"), EVP_sha224() },
-        { CF_DIGEST("SHA256"), EVP_sha256() },
-        { CF_DIGEST("SHA384"), EVP_sha384() },
-        { CF_DIGEST("SHA512"), EVP_sha512() },
-        { CF_DIGEST("MD4"), EVP_md4() },
-        { CF_DIGEST("MD5"), EVP_md5() },
-        { CF_DIGEST("MD5_SHA1"), EVP_md5_sha1() },
-        { CF_DIGEST("SHA512-256"), EVP_sha512_256() },
-        { CF_DIGEST("BLAKE2B256"), EVP_blake2b256() },
 #elif defined(CRYPTOFUZZ_LIBRESSL)
         { CF_DIGEST("SHA1"), EVP_sha1() },
         { CF_DIGEST("SHA224"), EVP_sha224() },
@@ -266,54 +257,12 @@ const EVP_CIPHER* OpenSSL::toEVPCIPHER(const component::SymmetricCipherType ciph
 
     switch ( cipherType.Get() ) {
 #if defined(CRYPTOFUZZ_BORINGSSL)
-        case CF_CIPHER("DES_CBC"):
-            return EVP_des_cbc();
-        case CF_CIPHER("DES_EDE_CBC"):
-            return EVP_des_ede_cbc();
-        case CF_CIPHER("DES_EDE3_CBC"):
-            return EVP_des_ede3_cbc();
-        case CF_CIPHER("DES_ECB"):
-            return EVP_des_ecb();
-        case CF_CIPHER("DES_EDE"):
-            return EVP_des_ede();
-        case CF_CIPHER("DES_EDE3"):
-            return EVP_des_ede3();
-        case CF_CIPHER("RC2_CBC"):
-            return EVP_rc2_cbc();
-        case CF_CIPHER("RC2_40_CBC"):
-            return EVP_rc2_40_cbc();
-        case CF_CIPHER("AES_128_ECB"):
-            return EVP_aes_128_ecb();
-        case CF_CIPHER("AES_128_CBC"):
-            return EVP_aes_128_cbc();
-        case CF_CIPHER("AES_128_OFB"):
-            return EVP_aes_128_ofb();
-        case CF_CIPHER("AES_128_CTR"):
-            return EVP_aes_128_ctr();
-        case CF_CIPHER("AES_128_GCM"):
-            return EVP_aes_128_gcm();
-        case CF_CIPHER("AES_192_ECB"):
-            return EVP_aes_192_ecb();
-        case CF_CIPHER("AES_192_CBC"):
-            return EVP_aes_192_cbc();
-        case CF_CIPHER("AES_192_OFB"):
-            return EVP_aes_192_ofb();
-        case CF_CIPHER("AES_192_CTR"):
-            return EVP_aes_192_ctr();
-        case CF_CIPHER("AES_192_GCM"):
-            return EVP_aes_192_gcm();
-        case CF_CIPHER("AES_256_ECB"):
-            return EVP_aes_256_ecb();
+        // case CF_CIPHER("AES_256_GCM"):
+        //     return EVP_aes_256_gcm();
         case CF_CIPHER("AES_256_CBC"):
             return EVP_aes_256_cbc();
-        case CF_CIPHER("AES_256_OFB"):
-            return EVP_aes_256_ofb();
-        case CF_CIPHER("AES_256_CTR"):
-            return EVP_aes_256_ctr();
-        case CF_CIPHER("AES_256_GCM"):
-            return EVP_aes_256_gcm();
-        case CF_CIPHER("RC4"):
-            return EVP_rc4();
+        case CF_CIPHER("AES_256_XTS"):
+            return EVP_aes_256_xts();
 #elif defined(CRYPTOFUZZ_LIBRESSL)
         case CF_CIPHER("DES_CFB"):
             return EVP_des_cfb();
@@ -1346,30 +1295,7 @@ const EVP_CIPHER* OpenSSL::toEVPCIPHER(const component::SymmetricCipherType ciph
 #if defined(CRYPTOFUZZ_BORINGSSL) || defined(CRYPTOFUZZ_LIBRESSL)
 const EVP_AEAD* OpenSSL::toEVPAEAD(const component::SymmetricCipherType cipherType) const {
     static const std::map<uint64_t, const EVP_AEAD*> LUT = {
-        { CF_CIPHER("CHACHA20_POLY1305"), EVP_aead_chacha20_poly1305() },
-        { CF_CIPHER("XCHACHA20_POLY1305"), EVP_aead_xchacha20_poly1305() },
-        { CF_CIPHER("AES_128_GCM"), EVP_aead_aes_128_gcm() },
         { CF_CIPHER("AES_256_GCM"), EVP_aead_aes_256_gcm() },
-#if defined(CRYPTOFUZZ_BORINGSSL)
-        { CF_CIPHER("AES_256_CBC_HMAC_SHA256"), EVP_aead_aes_128_ctr_hmac_sha256() },
-        { CF_CIPHER("AES_128_CTR_HMAC_SHA256"), EVP_aead_aes_128_ctr_hmac_sha256() },
-        { CF_CIPHER("AES_256_CTR_HMAC_SHA256"), EVP_aead_aes_256_ctr_hmac_sha256() },
-        { CF_CIPHER("AES_128_GCM_SIV"), EVP_aead_aes_128_gcm_siv() },
-        { CF_CIPHER("AES_256_GCM_SIV"), EVP_aead_aes_256_gcm_siv() },
-        { CF_CIPHER("AES_128_CCM_BLUETOOTH"), EVP_aead_aes_128_ccm_bluetooth() },
-        { CF_CIPHER("AES_128_CCM_BLUETOOTH_8"), EVP_aead_aes_128_ccm_bluetooth_8() },
-        { CF_CIPHER("AES_128_CBC_SHA1_TLS"), EVP_aead_aes_128_cbc_sha1_tls() },
-        { CF_CIPHER("AES_128_CBC_SHA1_TLS_IMPLICIT_IV"), EVP_aead_aes_128_cbc_sha1_tls_implicit_iv() },
-        { CF_CIPHER("AES_256_CBC_SHA1_TLS"), EVP_aead_aes_256_cbc_sha1_tls() },
-        { CF_CIPHER("AES_256_CBC_SHA1_TLS_IMPLICIT_IV"), EVP_aead_aes_256_cbc_sha1_tls_implicit_iv() },
-        { CF_CIPHER("DES_EDE3_CBC_SHA1_TLS"), EVP_aead_des_ede3_cbc_sha1_tls() },
-        { CF_CIPHER("DES_EDE3_CBC_SHA1_TLS_IMPLICIT_IV"), EVP_aead_des_ede3_cbc_sha1_tls_implicit_iv() },
-        { CF_CIPHER("NULL_SHA1_TLS"), EVP_aead_null_sha1_tls() },
-        { CF_CIPHER("AES_128_GCM_TLS12"), EVP_aead_aes_128_gcm_tls12() },
-        { CF_CIPHER("AES_256_GCM_TLS12"), EVP_aead_aes_256_gcm_tls12() },
-        { CF_CIPHER("AES_128_GCM_TLS13"), EVP_aead_aes_128_gcm_tls13() },
-        { CF_CIPHER("AES_256_GCM_TLS13"), EVP_aead_aes_256_gcm_tls13() },
-#endif
     };
 
     if ( LUT.find(cipherType.Get()) == LUT.end() ) {

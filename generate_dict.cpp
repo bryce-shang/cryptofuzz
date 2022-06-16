@@ -54,11 +54,11 @@ int main(void)
     FILE* fp = fopen("cryptofuzz-dict.txt", "wb");
 
     writeMap(fp, ModuleLUTMap);
-    writeMap(fp, OperationLUTMap);
-    writeMap(fp, DigestLUTMap);
+    // writeMap(fp, OperationLUTMap);
+    // writeMap(fp, DigestLUTMap);
     writeMap(fp, CipherLUTMap);
-    writeMap(fp, ECC_CurveLUTMap);
-    writeMap(fp, CalcOpLUTMap);
+    // writeMap(fp, ECC_CurveLUTMap);
+    // writeMap(fp, CalcOpLUTMap);
 
     {
         const std::vector<uint8_t> bufferSizes = {1, 2, 4, 8, 12, 16, 32};
